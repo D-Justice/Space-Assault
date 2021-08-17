@@ -1,35 +1,29 @@
-const baseURL = 'http://api.open-notify.org/astros.json'
-const listItem = document.getElementById('astronaut-list')
-const retrieveAstros = () => {
-    fetch(baseURL)
+const URL = 'http://localhost:3000'
+function fetchAstronauts() {
+    fetch(`${URL}/astronauts`)
     .then(response => response.json())
-    .then(data => astroNames(data))
+    .then(data => {
+        var astronauts = []
+        console.log(data)
+        data.forEach((person, i) => {
+            astronauts.push(person.name)
+        })
+        next(astronauts)
+    })
 }
-const astroNames = (data) => {
-    var astronauts = []
-    for (let i in data.people) {
-        astronauts.push(data.people[i].name)
-        let newItem = document.createElement('li')
-        
-        newItem.textContent = data.people[i].name
-        // newItem.style.fontSize = '30px'
-        listItem.appendChild(newItem)
-    }
-
-    next(astronauts)
-}
-retrieveAstros()
+let angle = 0
 function next(astros) {
+
+
+
     var earth = new Image();
     var moon = new Image();
     var spaceMan = new Image();
     var sun = new Image();
     var width = document.getElementById('space').width
     var height = document.getElementById('space').height
-    var x = 0
-    var y = 0
-    var right = true
-    var down = true
+    
+    
     let men = [sun, moon, earth, spaceMan]
     function init() {
         sun.src = './astronaut.png'
@@ -38,40 +32,48 @@ function next(astros) {
         spaceMan.src = './astronaut.png'
         
     }
-    let velo = 1;
+    
 
     function man(x, y, velX, velY, source, text, color) {
-        this.x = x
-        this.y = y
-        this.velX = velX
-        this.velY = velY
+        this.x = random(256, 1000 - 256)
+        console.log(source.width)
+        this.y = random(256, 1000 - 256)
+        this.velX = (velX <= 0.5 && velX >= -0.5) ? velX + 1 : velX
+        this.velY = (velY <= 0.5 && velY >= -0.5) ? velY + 1 : velY
         this.source = source
         this.text = text
         this.color = color
+        this.angle = randomfloat(-0.5,0.5)
+        this.angle = (this.angle === 0) ? 0.3 : this.angle
+        this.rotation = (Math.PI / 180) * randomfloat(-0.5, 0.5);
     }
     function random(min, max) {
         const num = Math.floor(Math.random() * (max - min + 1)) + min;
         return num;
     }
+    function randomfloat(min, max) {
+        const num = Math.random() * (max - min + 1) + min;
+        return num;
+    }
 
     var ctx = document.getElementById('space').getContext('2d');
 
-    ctx.clearRect(0,0, width, height)
+    
 
     man.prototype.update = function() {
-        if((this.x) >= width - 230) {
+        if((this.x) >= width - this.source.width / 2) {
         this.velX = -(this.velX);
         }
     
-        if((this.x) <= 0) {
+        if((this.x) <= this.source.width / 2) {
         this.velX = -(this.velX);
         }
     
-        if((this.y) >= height  - 100) {
+        if((this.y) >= height  - this.source.height / 2) {
         this.velY = -(this.velY);
         }
     
-        if((this.y) <= 0) {
+        if((this.y) <= this.source.height / 2) {
         this.velY = -(this.velY);
         }
         
@@ -86,8 +88,17 @@ function next(astros) {
         ctx.fillStyle = item.color
         ctx.font = '40px serif'
         
-        ctx.fillText(item.text, this.x, this.y)
+        this.angle += this.rotation
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+        ctx.translate(-item.source.width / 2,-item.source.height / 2);
+        ctx.drawImage(item.source,0,0);
+        
+        ctx.restore();
+        ctx.fillText(item.text, this.x - item.source.width / 2, this.y - item.source.height / 2)
         ctx.drawImage(item.source, this.x, this.y, 100, 100)
+        
         ctx.beginPath();
         
         ctx.stroke()
@@ -105,7 +116,8 @@ function next(astros) {
             random(-3, 3),
             men[1],
             astros[i += 1],
-            `rgb(${random(0,255)}, ${random(0,255)}, ${random(0,255)})`
+            `rgb(${random(0,255)}, ${random(0,255)}, ${random(0,255)})`,
+            
         )
         
         newMen.push(sir)
@@ -117,7 +129,8 @@ function next(astros) {
     function loop() {
         ctx.width = window.innerWidth;
         ctx.height = window.innerHeight
-        ctx.clearRect(0,0,width, height)
+        //ctx.clearRect(0,0,width, height)
+        
         for (let i = 0; i < newMen.length; i++) {
             newMen[i].draw(i)
             newMen[i].update()
@@ -130,3 +143,4 @@ function next(astros) {
     loop()
     init();
 }
+setTimeout(function(){fetchAstronauts()}, 3000)
