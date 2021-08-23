@@ -3,52 +3,68 @@
     {
       "name": "Mark Vande Hei",
       "craft": "ISS",
+      "deleteable": false,
       "id": 1
     },
     {
       "name": "Oleg Novitskiy",
       "craft": "ISS",
+      "deleteable": false,
       "id": 2
     },
     {
       "name": "Pyotr Dubrov",
       "craft": "ISS",
+      "deleteable": false,
       "id": 3
     },
     {
       "name": "Thomas Pesquet",
       "craft": "ISS",
+      "deleteable": false,
       "id": 4
     },
     {
       "name": "Megan McArthur",
       "craft": "ISS",
+      "deleteable": false,
       "id": 5
     },
     {
       "name": "Shane Kimbrough",
       "craft": "ISS",
+      "deleteable": false,
       "id": 6
     },
     {
       "name": "Akihiko Hoshide",
       "craft": "ISS",
+      "deleteable": false,
       "id": 7
     },
     {
       "name": "Nie Haisheng",
       "craft": "Tiangong",
+      "deleteable": false,
       "id": 8
-    },
-    {
-      "name": "Liu Boming",
-      "craft": "Tiangong",
-      "id": 9
     },
     {
       "name": "Tang Hongbo",
       "craft": "Tiangong",
+      "deleteable": false,
+      "id": 9
+    },
+    {
+      "name": "Liu Boming",
+      "craft": "Tiangong",
+      "deleteable": false,
       "id": 10
+    },
+    {
+      "name": "Meggerz",
+      "craft": "Your mom",
+      "deleteable": true,
+      "id": 11
     }
   ]
 }

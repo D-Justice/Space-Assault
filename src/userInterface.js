@@ -1,0 +1,1 @@
+var ctx = document.getElementById('space').getContext('2d');
