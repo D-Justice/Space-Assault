@@ -1,88 +1,25 @@
 const URL = 'http://localhost:3000'
-const newAstroForm = document.getElementById('astro-form')
-const astroName = document.getElementById('astro-name')
-const astroCraft = document.getElementById('astro-craft')
-const astronautList = document.getElementById('astronaut-list')
+
 var ctx = document.getElementById('space').getContext('2d');
 var width = document.getElementById('space').width
 var height = document.getElementById('space').height
 var astronaut = new Image();
 var spaceship = new Image();
+var runOnce = false
+
 
 var newMen = []
 var enemies = []
 
-var enemyNum = 12
+var enemyNum = 4;
+var score = 0;
 
-function postNewAstro(name, craft) {
-    fetch(`${URL}/astronauts`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            'name': name,
-            'craft': craft,
-            'deleteable': true
-        })
-    })
-}
-function fetchAstronauts() {
-    fetch(`${URL}/astronauts`)
-    .then(response => response.json())
-    .then(data => {
-        var astronauts = []
-        console.log(data)
-        data.forEach((person, i) => {
-            
-            listAstronauts(person.name, person.craft,person.id, person.deleteable)
-            astronauts.push(person.name)
-        })
-        next(astronauts)
-    })
-}
-
-
-function listAstronauts(name, craft,id, deleteable) {
-    const listItem = document.createElement('li')
-    const delButton = document.createElement('button')
-    
-    if (deleteable) {
-        delButton.textContent = 'X'
-        
-        listItem.textContent = `${name} -${craft}`
-        listItem.appendChild(delButton)
-        astronautList.appendChild(listItem)
-
-        delButton.addEventListener('click', () =>{
-            deleteAstronaut(id)
-            while(!!astronautList.firstChild) {
-                astronautList.lastChild.remove()
-            }
-            fetchAstronauts()
-        })
-    } else {
-        listItem.textContent = `${name} -${craft}`
-        astronautList.appendChild(listItem)
-    }
-    
-}
-function deleteAstronaut(id) {
-    fetch(`${URL}/astronauts/${id}`, {
-        method: 'DELETE',
-    })
-    .then(response => response.json())
-    .then(data => console.log(data))
-}
-
-
-    
 class Astronauts {
     constructor(x, y, velX, velY, source, text, color) {
         this.x = x
         this.y = y
-        this.velX = (velX <= 0.5 && velX >= -0.5) ? velX + 1 : velX
-        this.velY = (velY <= 0.5 && velY >= -0.5) ? velY + 1 : velY
+        this.velX = velX//(velX <= 0.5 && velX >= -0.5) ? velX + 1 : velX
+        this.velY = velX//(velY <= 0.5 && velY >= -0.5) ? velY + 1 : velY
         this.source = source
         this.text = text
         this.color = color
@@ -168,6 +105,7 @@ class Astronauts {
         ctx.font = '20px serif'
         
         this.angle += this.rotation
+        
         ctx.save();
         ctx.translate(this.x, this.y);
         ctx.rotate(this.angle);
@@ -176,16 +114,23 @@ class Astronauts {
         
         ctx.restore();
         ctx.fillText(item.text, this.x - item.source.width / 4, this.y - item.source.height / 4)
-        
-        
+        ctx.fillStyle = 'red'
+        ctx.fillText(`Score: ${score}`, 100, 100)
+
+
         ctx.beginPath();
         ctx.lineWidth = '4'
         ctx.strokeStyle = 'green'
         ctx.rect(width / 2.5,0,400,height)
         ctx.stroke()
     }
-    createAstros() {
-        
+    collision(enemies) {
+        for (let i in enemies) {
+            if (this.y >= enemies[i].y) {
+                this.velY = -this.velY
+            }
+        }
+        this.y += this.velY
         
         
     }
@@ -204,7 +149,12 @@ class Astronauts {
         for (let i = 0; i < enemies.length; i++) {
             enemies[i].draw(enemies[i])
             enemies = enemies[i].enemyUpdate(enemies, i)
-            
+            try {
+                enemies[i].collision(enemies)
+            }
+            catch {
+                
+            }
             
         }
         if (enemies.length === 0) {
@@ -218,33 +168,34 @@ class Astronauts {
             
         }
         if (newMen.length === 0) {
-            console.log('GAME OVER')
-            gameOver()
+            
+            if (!runOnce) {
+                console.log('GameOver')
+                gameOver()
+                runOnce = true
+            }
+            
         }
         requestAnimationFrame(() =>{Astronauts.loop()})
     }
     
 }
 
-function gameOver() {
-    let game = document.getElementById('space')
-    let gameOverText = document.querySelector('#game-over')
-    game.remove()
-    gameOverText.style.display = 'inline-block';
-    
-}
+
 
 function createEnemies(toggle) {
     var enemy = new Astronauts(
         (toggle) ? 100 : width - 100,
         Astronauts.random(256, height - 256),
-        Astronauts.random(-2, -1), //NECCESSARY FIX
+        Astronauts.random(-2, -4), //NECCESSARY FIX
         Astronauts.random(-2, 2),
         spaceship,
         'Enemy',
         `red`,
         
     )
+    enemy.angle = 0
+    enemy.rotation = 0
     return enemy
 }
 function next(astros) {
@@ -270,8 +221,7 @@ function next(astros) {
         
         toggle = !toggle
         let newEnemy = createEnemies(toggle)
-        newEnemy.angle = 0
-        newEnemy.rotation = 0
+        
         
         enemies.push(newEnemy)
     }
@@ -284,7 +234,10 @@ function next(astros) {
     document.getElementById('space').addEventListener('click', (e) => {
        
         enemies.forEach((elem, i) => {
-            if (e.pageX <= (elem.x + (elem.source.width / 3)) && e.pageX >= (elem.x) && (e.pageY <= (elem.y + (elem.source.height / 4))) && (e.pageY >= (elem.y - (elem.source.height / 8)))) {
+            if (e.pageX <= (elem.x + (elem.source.width / 3)) && e.pageX >= (elem.x - (elem.source.width / 20)) && (e.pageY <= (elem.y + (elem.source.height / 4))) && (e.pageY >= (elem.y - (elem.source.height / 30)))) {
+                score += 100
+                console.log(e.pageX,elem.x, e.pageY, elem.y)
+                console.log(elem.source.height / 6)
                 enemies = enemies.filter(function(enemy) {
                     return enemy !== enemies[i]
                 })
@@ -305,13 +258,13 @@ function next(astros) {
 
 
 
-setTimeout(function(){fetchAstronauts()}, 1000)
 
-newAstroForm.addEventListener('submit', (e) => {
-    e.preventDefault()
-    postNewAstro(astroName.value, astroCraft.value)
-    astronautList.innerHTML = ''
-    fetchAstronauts()
-    newAstroForm.reset() 
-})
+
+// newAstroForm.addEventListener('submit', (e) => {
+//     e.preventDefault()
+//     postNewAstro(astroName.value, astroCraft.value)
+//     astronautList.innerHTML = ''
+//     fetchAstronauts()
+//     newAstroForm.reset() 
+// })
 

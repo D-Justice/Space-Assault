@@ -1,3 +1,6 @@
+@font-face {
+    font-family: 'Press Start 2P';
+  }
 html, body {
     width:  100%;
     height: 100%;
@@ -5,6 +8,8 @@ html, body {
   }
   body {
     background-color: #7cedea;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 30px;
   }
 #background {
     width: 100%;
@@ -17,15 +22,15 @@ html, body {
 }
 #game-over {
     width: 100%;
-    height: 80%;
-    background-color: darkmagenta;
+    height: 100%;
+    
     text-align: center;
     display: none;
 }
 #game-over-text {
     color: red;
     width: 80%;
-    font-size: 300px;
+    font-size: 250px;
     
     margin: auto;
     
@@ -37,7 +42,7 @@ html, body {
     width: 35vw;
     margin-top: 2vw;
     margin-left: 1vw;
-    display: inline-block;
+    display: none;
     
     
 }
@@ -51,14 +56,16 @@ html, body {
 #space {
     border: solid 7px grey;
     box-shadow: 5px 5px darkgrey;
+    border-radius: 25px;
     margin: 2vw 0vw 0vw 3vw;
     width: 1750px;
     height: 875px;
-    display: inline-block;
+    display: none;
+    
     
 }
 #form-container {
-    display: inline-block;
+    display: none;
     position: relative;
     background-color: grey;
     border: solid 5px darkgrey;
@@ -67,6 +74,54 @@ html, body {
     width: 35%;
     
 
+}
+#start-game-screen {
+    margin: auto;
+    width: 51%;
+    padding: 425px 0;
+}
+
+.start-screen-buttons {
+        text-align: center;
+        display: inline-block;
+        margin:5px;
+        font-weight: bold;
+        padding: 10px 0 10px 10px;
+        border-radius: 7px;
+        cursor: pointer;
+
+}
+#scores-button {
+    color: #000000;
+    background: #ff2929;
+    box-shadow: 0 0.2em #af1616;
+    text-shadow: 2px 2px #af1616;
+}
+#start-button {
+    background-color: #13ff13;
+    box-shadow: 0 0.2em #037f03;
+    text-shadow: 2px 2px #037f03;
+}
+#create-team-button {
+    background-color: #ffff29;
+    box-shadow: 0 0.2em #7d7d00;
+    text-shadow: 2px 2px #7d7d00;
+}
+#scores-button:active {
+    box-shadow: none;
+    top: 0.2em;
+    position: relative;
+}
+#start-button:active {
+    box-shadow: none;
+    top: 0.2em;
+    position: relative;
+    
+}
+#create-team-button:active {
+    box-shadow: none;
+    top: 0.2em;
+    position: relative;
 }
 
 

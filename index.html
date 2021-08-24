@@ -6,15 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel='stylesheet' href='./style/style.css'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        </style>
     <canvas id='space' width='1750' height='875'></canvas>
     <title>NASA Bois</title>
 </head>
 <body >
-    <div id='game-over'>
-        <h1 id='game-over-text'>GAME OVER</h1>
-    </div>
     <div>
         <img id='background' src='space.jpg'>
+        <div id='game-over'>
+            <h1 id='game-over-text'>GAME OVER</h1>
+            <div id='game-over-form'>
+                <form id='user-score-submit'>
+                    <div class="form-group">
+                    <label for="player-name">Player Name: </label>
+                    <input type="text" class="form-control" id="player-name" placeholder="Enter Your name...">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Save High-Score</button>
+                    
+                </form>
+                <button type='button' class='btn btn-primary' id='restart-button'>Restart</button>
+            </div>
+        </div>
+    
+        <div id='start-game-container'>
+            <div id='start-game-screen'>
+                <button class='start-screen-buttons' id='scores-button'>High Scores</button>
+                <button class='start-screen-buttons' id='start-button'>Start</button>
+                <button class='start-screen-buttons' id='create-team-button'>Create Team</button>
+            </div>
+        </div>
+    
+        
     </div>
 <div class='row align-items-start'>
     <div class='col' id='side-bar'>
@@ -45,5 +70,6 @@
     <script src='./src/nasaData.js'></script>
     <script src='./src/index.js'></script>
     <script src='./src/userInterface.js'></script>
+    
 </body>
 </html>
