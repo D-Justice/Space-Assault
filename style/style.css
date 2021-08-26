@@ -31,9 +31,53 @@ html, body {
     color: red;
     width: 80%;
     font-size: 250px;
+    display: inline-block;
+    margin-left: -13%;
     
-    margin: auto;
+}
+#saved-score {
+    background-color: #13ff13;
+    margin-bottom: 50px;
+    display: none;
+}
+#score-error {
+    background-color: #ff2929;
+    margin-bottom: 50px;
+    display: none;
+}
+#player-name-label {
+    color: #13ff13;
+}
+#high-score-display {
+    background-color: red;
+    width: 15%;
+    height: 50%;
+    float: left;
+    margin-top: 2.1%;
+    margin-left: 2%;
+    display: inline-block;
+    text-align: left;
+}
+#high-score-display-list {
+    position: absolute;
+    background-color: whitesmoke;
+}
+#high-score-display-list li {
+    font-size: 25px;
+    list-style: none;
+    margin-left: -25px;
     
+}
+#high-score-display-list::before {
+    content: attr(aria-label);
+    font-size: 100%;
+    font-weight: bold;
+    padding-left: -10px;
+
+}
+#high-score-display-list li::before {
+    content: '>';
+    padding-right: 8px;
 }
 #side-bar {
     background-color: grey;
@@ -42,6 +86,7 @@ html, body {
     width: 35vw;
     margin-top: 2vw;
     margin-left: 1vw;
+    float: right;
     display: none;
     
     
@@ -75,6 +120,10 @@ html, body {
     
 
 }
+#player-name {
+    width: 40%;
+    margin:auto;
+}
 #start-game-screen {
     margin: auto;
     width: 51%;
@@ -107,6 +156,13 @@ html, body {
     box-shadow: 0 0.2em #7d7d00;
     text-shadow: 2px 2px #7d7d00;
 }
+#back-button {
+    color: #000000;
+    background: #ff2929;
+    box-shadow: 0 0.2em #af1616;
+    text-shadow: 2px 2px #af1616;
+    display: none;
+}
 #scores-button:active {
     box-shadow: none;
     top: 0.2em;
@@ -117,6 +173,11 @@ html, body {
     top: 0.2em;
     position: relative;
     
+}
+#back-button:active {
+    box-shadow: none;
+    top: 0.2em;
+    position: relative;
 }
 #create-team-button:active {
     box-shadow: none;

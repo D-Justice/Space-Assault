@@ -11,7 +11,7 @@ var runOnce = false
 var newMen = []
 var enemies = []
 
-var enemyNum = 4;
+var enemyNum = 11;
 var score = 0;
 
 class Astronauts {
@@ -28,8 +28,8 @@ class Astronauts {
         this.rotation = (Math.PI / 180) * Astronauts.randomfloat(-0.5, 0.5);
     }
     static init() {
-        astronaut.src = './astronaut.png'
-        spaceship.src = './spaceShip.png'
+        astronaut.src = './imgs/astronaut.png'
+        spaceship.src = './imgs/spaceShip.png'
         
         
     }
@@ -217,7 +217,7 @@ function next(astros) {
         )
         newMen.push(sir)
     }
-    while(enemies.length < enemyNum) {
+    while(enemies.length < enemyNum && astros.length > 0) {
         
         toggle = !toggle
         let newEnemy = createEnemies(toggle)

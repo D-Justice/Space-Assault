@@ -16,12 +16,20 @@
     <div>
         <img id='background' src='space.jpg'>
         <div id='game-over'>
+            <div id='high-score-display'>
+                <ul aria-label='TOP 10 SCORES' id='high-score-display-list'>
+                    
+                </ul>
+            </div>
             <h1 id='game-over-text'>GAME OVER</h1>
+            
             <div id='game-over-form'>
+                <h2 id='saved-score'>Your score was saved</h2>
+                <h2 id='score-error'>Please enter a name before saving your score</h2>
                 <form id='user-score-submit'>
                     <div class="form-group">
-                    <label for="player-name">Player Name: </label>
-                    <input type="text" class="form-control" id="player-name" placeholder="Enter Your name...">
+                    <label for="player-name" id='player-name-label'>Player Name: </label>
+                    <input type="text" class="form-control" id="player-name" maxlength='8' placeholder="Enter Your name...">
                     </div>
                     
                     <button type="submit" class="btn btn-primary">Save High-Score</button>
@@ -36,14 +44,16 @@
                 <button class='start-screen-buttons' id='scores-button'>High Scores</button>
                 <button class='start-screen-buttons' id='start-button'>Start</button>
                 <button class='start-screen-buttons' id='create-team-button'>Create Team</button>
+                
             </div>
+            <button class='start-screen-buttons' id='back-button'>Back</button>
         </div>
     
         
     </div>
 <div class='row align-items-start'>
     <div class='col' id='side-bar'>
-        <h1>Current Astronauts in Space</h1>
+        <h1>Create your own team</h1>
         <ul id='astronaut-list'>
             
         </ul>
@@ -55,10 +65,7 @@
             <label for="addAstro">Astronaut's Name</label>
             <input type="text" class="form-control" id="astro-name" placeholder="Enter Astronaut's Name...">
             </div>
-            <div class="form-group">
-            <label for="addAstroCraft">Astronaut's Craft</label>
-            <input type="text" class="form-control" id="astro-craft" placeholder="Enter Astronaut's Craft...">
-            </div>
+            
             
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
