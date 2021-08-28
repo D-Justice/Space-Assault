@@ -1,4 +1,5 @@
 {
+  "team": [],
   "score": [
     {
       "playerName": "Damian",
@@ -194,6 +195,16 @@
       "playerName": "Menag",
       "score": 0,
       "id": 40
+    },
+    {
+      "playerName": "meg",
+      "score": 0,
+      "id": 41
+    },
+    {
+      "playerName": "Bad Scor",
+      "score": 1200,
+      "id": 42
     }
   ],
   "astronauts": [
@@ -256,12 +267,6 @@
       "craft": "Tiangong",
       "deleteable": false,
       "id": 10
-    },
-    {
-      "name": "Meggerz",
-      "craft": "Your mom",
-      "deleteable": true,
-      "id": 11
     }
   ]
 }

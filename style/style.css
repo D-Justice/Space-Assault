@@ -2,7 +2,7 @@
     font-family: 'Press Start 2P';
   }
 html, body {
-    width:  100%;
+    width:  99%;
     height: 100%;
     margin: 0;
   }
@@ -11,6 +11,7 @@ html, body {
     font-family: 'Press Start 2P', cursive;
     font-size: 30px;
   }
+
 #background {
     width: 100%;
     height: 100%;
@@ -79,6 +80,12 @@ html, body {
     content: '>';
     padding-right: 8px;
 }
+#team-select {
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+
 #side-bar {
     background-color: grey;
     border: solid 5px darkgrey;
@@ -94,9 +101,61 @@ html, body {
 #side-bar h1 {
     text-align: center;
 }
+#astronaut-list {
+    background-color: grey;
+    position: relative;
+    margin-left: 2%;
+    height: 100%;
+    margin-top: 3%;
+    margin-right: 2%;
+    border: solid 5px darkgrey;
+    box-shadow: 3px 3px darkslategray;
+    display: none;
+}
 #astronaut-list li {
-    margin-left: 1vw;
+    margin-left: 30px;
     font-size: 2vw;
+    
+}
+.col {
+    padding-right: 0px;
+}
+.team {
+    position: relative;
+    height: 100%;
+    max-width: 33%;
+    margin-left: 1%;
+    margin-top: 1%;
+    min-height: 350px;
+    min-height: 400px;
+}
+.team ul {
+    min-height: 284px;
+}
+.team li {
+    font-size: 20px;
+}
+#create-team-error {
+    background-color: #ff2929;
+    margin-bottom: -2%;
+    display: none;
+    
+    width: 100%;
+    text-align: center;
+    margin-top: 1%;
+}
+#team-list {
+    background-color: grey;
+    max-width: 47.5%;
+    margin-top: -20%;
+    margin-left: 1%;
+    height: 100%;
+ 
+    border: solid 5px darkgrey;
+    box-shadow: 3px 3px darkslategray;
+}
+#team-select-r1 {
+    margin-bottom: 2%;
 }
 #space {
     border: solid 7px grey;
@@ -115,19 +174,26 @@ html, body {
     background-color: grey;
     border: solid 5px darkgrey;
     box-shadow: 3px 3px darkslategray;
-    margin: 3% 0 0 1%;
+    margin: 3% 0 25% 1%;
     width: 35%;
+    max-height: 162px;
+    
     
 
 }
+
 #player-name {
     width: 40%;
     margin:auto;
 }
 #start-game-screen {
     margin: auto;
+    position: absolute;
+    top: 45%;
+    left: 25%;
     width: 51%;
-    padding: 425px 0;
+    
+    
 }
 
 .start-screen-buttons {
@@ -156,12 +222,38 @@ html, body {
     box-shadow: 0 0.2em #7d7d00;
     text-shadow: 2px 2px #7d7d00;
 }
-#back-button {
+#save-team {
+    background-color: #ffff29;
+    box-shadow: 0 0.2em #7d7d00;
+    text-shadow: 2px 2px #7d7d00;
+    display: none;
+}
+
+.back-button {
     color: #000000;
     background: #ff2929;
+    
     box-shadow: 0 0.2em #af1616;
     text-shadow: 2px 2px #af1616;
     display: none;
+}
+#team-select-back-button {
+    margin-left: 2%;
+    display: none;
+}
+#create-team-back-button {
+    margin-left: 2%;
+    display: none;
+}
+#save-team:active {
+    box-shadow: none;
+    top: 0.2em;
+    position: relative;
+}
+#team-select-back-button:active {
+    box-shadow: none;
+    top: 0.2em;
+    position: relative;
 }
 #scores-button:active {
     box-shadow: none;
@@ -174,7 +266,8 @@ html, body {
     position: relative;
     
 }
-#back-button:active {
+
+.back-button:active {
     box-shadow: none;
     top: 0.2em;
     position: relative;
