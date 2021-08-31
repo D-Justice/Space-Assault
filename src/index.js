@@ -1,4 +1,5 @@
-const URL = 'http://localhost:3000'
+
+
 
 var ctx = document.getElementById('space').getContext('2d');
 var width = document.getElementById('space').width
@@ -180,7 +181,20 @@ class Astronauts {
     }
     
 }
+function gameOver() {
+    let game = document.getElementById('space')
+    
+    game.remove()
+    gameOverText.style.display = 'inline-block';
+    let myScore = document.createElement('p')
+    myScore.style.color = '#ff2929'
+    myScore.innerHTML = `SCORE: ${score}`
 
+    gameOverText.appendChild(myScore)
+    highScoreScreen.displayHighScore(topScoresList, 10)
+    
+    
+}
 
 
 function createEnemies(toggle) {
@@ -253,7 +267,7 @@ function next(astros) {
 
 
     
-    
+
 
 
 

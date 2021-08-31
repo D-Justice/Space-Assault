@@ -1,5 +1,21 @@
 {
-  "team": [],
+  "team": [
+    {
+      "teamName": "Pet Squadd",
+      "teamMembers": [
+        "Meg",
+        "Damian",
+        "Penny",
+        "Lovey",
+        "Bridger",
+        "Bella",
+        "Jazz",
+        "Ellie",
+        "Nero"
+      ],
+      "id": 1
+    }
+  ],
   "score": [
     {
       "playerName": "Damian",
@@ -117,11 +133,6 @@
       "id": 23
     },
     {
-      "playerName": "",
-      "score": 0,
-      "id": 24
-    },
-    {
       "playerName": "Jill",
       "score": 0,
       "id": 25
@@ -137,11 +148,6 @@
       "id": 27
     },
     {
-      "playerName": "",
-      "score": 0,
-      "id": 28
-    },
-    {
       "playerName": "Lil john T",
       "score": 0,
       "id": 29
@@ -155,11 +161,6 @@
       "playerName": "Rock OWN",
       "score": 200,
       "id": 32
-    },
-    {
-      "playerName": "",
-      "score": 0,
-      "id": 33
     },
     {
       "playerName": "d",
@@ -205,6 +206,16 @@
       "playerName": "Bad Scor",
       "score": 1200,
       "id": 42
+    },
+    {
+      "playerName": "The boy",
+      "score": 0,
+      "id": 43
+    },
+    {
+      "playerName": "PensMum",
+      "score": 900,
+      "id": 44
     }
   ],
   "astronauts": [

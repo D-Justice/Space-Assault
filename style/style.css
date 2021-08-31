@@ -9,7 +9,7 @@ html, body {
   body {
     background-color: #7cedea;
     font-family: 'Press Start 2P', cursive;
-    font-size: 30px;
+    font-size: 1.5vw;
   }
 
 #background {
@@ -150,7 +150,7 @@ html, body {
     margin-top: -20%;
     margin-left: 1%;
     height: 100%;
- 
+    display: none;
     border: solid 5px darkgrey;
     box-shadow: 3px 3px darkslategray;
 }
@@ -190,14 +190,15 @@ html, body {
     margin: auto;
     position: absolute;
     top: 45%;
-    left: 25%;
-    width: 51%;
+    width: 100%;
+    min-width: 600px;
     
     
 }
 
 .start-screen-buttons {
         text-align: center;
+        
         display: inline-block;
         margin:5px;
         font-weight: bold;
@@ -208,6 +209,7 @@ html, body {
 }
 #scores-button {
     color: #000000;
+    margin-left: 25%;
     background: #ff2929;
     box-shadow: 0 0.2em #af1616;
     text-shadow: 2px 2px #af1616;
@@ -287,3 +289,22 @@ html, body {
         bottom: 7px
     }
 }
+
+/* @media only screen and (max-width: 1300px) {
+    #start-button {
+        
+        display: block;
+        width: 100%;
+        margin-bottom: 3%;
+    }
+    #create-team-button {
+        display: block;
+        width: 100%;
+    }
+    #scores-button {
+        margin-left: 0%;
+        display: block;
+        width: 100%;
+        margin-bottom: 3%;
+    }
+  }  */
