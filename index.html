@@ -38,14 +38,53 @@
                 <button type='button' class='btn btn-primary' id='restart-button'>Restart</button>
             </div>
         </div>
-    
-        <div id='start-game-container'>
-            <div id='start-game-screen'>
-                <button class='start-screen-buttons' id='scores-button'>High Scores</button>
-                <button class='start-screen-buttons' id='start-button'>Start</button>
-                <button class='start-screen-buttons' id='create-team-button'>Create Team</button>
+        <div id='how-to-play-screen'>
+            <div id='how-to-play-container'>
+                    
+                    
+                    <div id='how-to-play'>
+                        <h1>How to play</h1><hr>
+                        <p>The aim of this game is to protect your <span style='color:blue'>astronauts</span><span></span><img src='./imgs/astronaut.png' alt='Astronaut' id='astronaut-pic'></span> for as long as possible while <span style='color: red;'>enemies</span> attempt to capture them.</p>
+                        <p><span style='color:blue'>Astronauts</span> will bounce around within the middle section. When an enemy touches the center <b>division</b>, one of your astronauts will be captured.<br> <span><img src='./imgs/spaceShip.png' alt='Enemy' id='enemy-pic'></span>To prevent this, you must <span style='color: green;'><i>click</i></span> on the <span style='color: red;'>enemies</span> to destroy them.
+                        <br><br>There is <span style='color: red;'>NO WINNING THIS GAME</span>. You must keep your team alive for as long as possible. <span style='color: red;'>Enemy</span> waves will progressively get harder until they succeed. <span style='color: green;'><i>Goodluck...</i></span></p>
+                    </div>
+                    <button class='start-screen-buttons back-button', id='how-to-play-back-button'>Back</button>
                 
             </div>
+            
+        </div>
+        <div id='start-game-container'>
+            <div id='start-game-screen'>
+                <div class='container'>
+                    <div class='row'>
+                        <div class='col-lg-4'>
+                            <button class='start-screen-buttons' id='scores-button'>High Scores</button>
+                        </div>
+                        <div class='col-lg-4'>
+                            <button class='start-screen-buttons' id='start-button'>Start</button>
+                        </div>
+                        <div class='col-lg-4'>
+                            <button class='start-screen-buttons' id='create-team-button'>Create Team</button>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+                <div class='lower-start-screen'>
+                    <div class='container'>
+                        <div class='row'>
+                            
+                            <div class='col-lg-6'>
+                                <button class='start-screen-buttons' id='how-to-play-button'>?</button>
+                            </div>
+                            
+                            <div class='col-lg-6'>
+                                <button class='start-screen-buttons' id='contact-me'><a href='https://github.com/D-Justice'>Developer</a></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
             <button class='start-screen-buttons back-button' id='high-score-back-button'>Back</button>
         </div>
         <div id='create-team'>

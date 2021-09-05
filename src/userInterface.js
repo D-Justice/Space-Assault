@@ -4,17 +4,20 @@
 startButton.addEventListener('click', () => {
     startGameScreen.style.display = 'none';
     teamSelectPage.style.display = 'inline-block'
+    lowerStartScreen.style.display = 'none';
     //game.style.display = 'inline-block'
     teamSelectBackButton.style.display = 'inline-block'
     teamSelectScreen.teamSelect()
     //fetchAstronauts()
 })
 scoresButton.addEventListener('click', () =>{
+    
     highScoreScreen.startMenuHighScore()
 })
 createTeamButton.addEventListener('click', () =>{
     createTeamPage.style.display = 'block';
     saveTeamButton.style.display = 'block'
+    lowerStartScreen.style.display = 'none';
     teamList.style.display = 'inline-block'
     createTeamScreen.createTeam()
 })
@@ -35,15 +38,20 @@ newAstroForm.addEventListener('submit', (e)=> {
     if (userAstronauts.length >= 9) {
         createTeamError.style.display = 'inline-block';
     } else {
-        
+        createTeamError.style.display = 'none';
         userAstronauts.push(astroName.value)
         astronautList.innerHTML = ''
         let teamNumber = document.createElement('li')
+
         teamNumber.id = 'team-number'
         for (let i in userAstronauts) {
             let newAstronaut = document.createElement('li')
             let deleteButton = document.createElement('button')
+            newAstronaut.style.marginBottom = '10px'
+            newAstronaut.classList = 'deletableMember'
             deleteButton.textContent = 'X'
+            deleteButton.style.position = 'absolute';
+            deleteButton.style.right = '20px'
             newAstronaut.textContent = userAstronauts[i]
             newAstronaut.appendChild(deleteButton)
             astronautList.appendChild(newAstronaut)
@@ -100,12 +108,24 @@ teamSelectBackButton.addEventListener('click', () => {
     teamSelectPage.style.display = 'none';
     teamSelectRow1.innerHTML = ''
     teamSelectRow2.innerHTML = ''
-    startGameScreen.style.display = 'inline-block';
+    startScreen.gameStart()
 })
 backButton.addEventListener('click', () => {
     document.querySelector('#scores-list').remove()
     document.querySelector('#top-scores').remove()
+    
     backButton.style.display = 'none';
+    startScreen.gameStart()
+})
+howToPlayButton.addEventListener('click', () => {
+    startGameScreen.style.display = 'none';
+    lowerStartScreen.style.display = 'none';
+    howToPlayBackButton.style.display = 'block'
+    howToPlayScreen.style.display = 'inline-block';
+})
+howToPlayBackButton.addEventListener('click', () => {
+    howToPlayBackButton.style.display = 'none';
+    howToPlayScreen.style.display = 'none';
     startScreen.gameStart()
 })
 })(createTeamScreen, startScreen, teamSelectScreen, highScoreScreen)

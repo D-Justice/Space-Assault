@@ -52,6 +52,7 @@ function postHighScore(score, playerName) {
 }
 function startMenuHighScore() {
     startGameScreen.style.display = 'none';
+    lowerStartScreen.style.display = 'none';
     var topScores = document.createElement('h1')
     var ul = document.createElement('ul')
     topScores.style.textAlign = 'center';

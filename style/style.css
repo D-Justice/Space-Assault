@@ -46,6 +46,9 @@ html, body {
     margin-bottom: 50px;
     display: none;
 }
+#top-scores {
+    width: 100%;
+}
 #player-name-label {
     color: #13ff13;
 }
@@ -168,6 +171,12 @@ html, body {
     
     
 }
+.lower-start-screen {
+    position:absolute;
+    bottom: 0px;
+    width: 40%;
+}
+
 #form-container {
     display: none;
     position: relative;
@@ -186,6 +195,9 @@ html, body {
     width: 40%;
     margin:auto;
 }
+#start-game-container {
+    width: 102%;
+}
 #start-game-screen {
     margin: auto;
     position: absolute;
@@ -194,6 +206,33 @@ html, body {
     min-width: 600px;
     
     
+}
+#how-to-play-screen {
+    display: none;
+    width: 100%;
+}
+#astronaut-pic {
+    float:right;
+}
+#enemy-pic {
+    float:left;
+}
+#how-to-play {
+    background-color: grey;
+    border: solid 5px darkgrey;
+    box-shadow: 3px 3px darkslategrey;
+    border-radius: 25px;
+    width: 100%;
+    position: relative;
+    margin: 2% 1% 0 1%;
+    height: 100%;
+}
+#how-to-play h1 {
+    text-align: center;
+    color: gold;
+}
+#how-to-play p {
+    padding: 15px;
 }
 
 .start-screen-buttons {
@@ -207,20 +246,46 @@ html, body {
         cursor: pointer;
 
 }
+#how-to-play-container {
+
+}
+#how-to-play-button {
+    background-color: #7404be;
+    box-shadow: 0 0.2em #3c0163;
+    text-shadow: 2px 2px #5b0296;
+    width: 40%;
+    
+}
+#how-to-play-back-button {
+    display: none;
+    margin-top: 5%;
+}
+#contact-me {
+    background-color: #0426be;
+    box-shadow: 0 0.2em #021b8b;
+    text-shadow: 2px 2px #021774;
+    margin-left: -60%;
+}
+#contact-me a {
+    text-decoration: none; 
+    color: black;
+}
 #scores-button {
     color: #000000;
-    margin-left: 25%;
+    width: 100%;
     background: #ff2929;
     box-shadow: 0 0.2em #af1616;
     text-shadow: 2px 2px #af1616;
 }
 #start-button {
     background-color: #13ff13;
+    width: 100%;
     box-shadow: 0 0.2em #037f03;
     text-shadow: 2px 2px #037f03;
 }
 #create-team-button {
     background-color: #ffff29;
+    width: 100%;
     box-shadow: 0 0.2em #7d7d00;
     text-shadow: 2px 2px #7d7d00;
 }
@@ -239,6 +304,10 @@ html, body {
     text-shadow: 2px 2px #af1616;
     display: none;
 }
+#how-to-play-back-button {
+    margin-left: 2%;
+    display: none;
+}
 #team-select-back-button {
     margin-left: 2%;
     display: none;
@@ -246,6 +315,11 @@ html, body {
 #create-team-back-button {
     margin-left: 2%;
     display: none;
+}
+#how-to-play-button:active {
+    box-shadow: none;
+    top: 0.2em;
+    position: relative;
 }
 #save-team:active {
     box-shadow: none;

@@ -11,16 +11,19 @@ var runOnce = false
 
 var newMen = []
 var enemies = []
+var hitMarker = [0, 0]
+var radius = 0
+var clicked = false
 
-var enemyNum = 11;
+var enemyNum = 4;
 var score = 0;
 
 class Astronauts {
     constructor(x, y, velX, velY, source, text, color) {
         this.x = x
         this.y = y
-        this.velX = velX//(velX <= 0.5 && velX >= -0.5) ? velX + 1 : velX
-        this.velY = velX//(velY <= 0.5 && velY >= -0.5) ? velY + 1 : velY
+        this.velX = (velX <= 0.5 && velX >= -0.5) ? velX + 1 : velX
+        this.velY = (velY <= 0.5 && velY >= -0.5) ? velY + 1 : velY
         this.source = source
         this.text = text
         this.color = color
@@ -81,10 +84,6 @@ class Astronauts {
                 return enemy !== enemies[i]
             })
             }
-        //NECCESSARY FIX - DELETES ENEMIES WHEN HITS RIGHT WALL
-        // if((this.x) >= (width)) {
-        //     this.velX = (this.VelX)
-        // }
     
         if((this.y) >= height  - this.source.height / 5) {
         this.velY = -(this.velY);
@@ -99,7 +98,17 @@ class Astronauts {
         return enemies
     };
     
-    draw(newMen) {
+    draw(newMen, mposx = hitMarker[0], mposy = hitMarker[1], r = radius) {
+        
+        if (clicked) {
+            if (r >= 1) {
+                radius -= 0.2
+                
+            } else if (r <= 1) {
+                radius = 0
+            }
+            
+        }
         
         let item = newMen
         ctx.fillStyle = item.color
@@ -112,14 +121,19 @@ class Astronauts {
         ctx.rotate(this.angle);
         ctx.translate(-50,-50);
         ctx.drawImage(item.source,0,0, 100, 100);
+
+        
         
         ctx.restore();
         ctx.fillText(item.text, this.x - item.source.width / 4, this.y - item.source.height / 4)
         ctx.fillStyle = 'red'
         ctx.fillText(`Score: ${score}`, 100, 100)
 
-
         ctx.beginPath();
+        ctx.arc(mposx - 60, mposy - 38, r, 0, 2*Math.PI)
+        ctx.fill();
+        ctx.beginPath();
+        
         ctx.lineWidth = '4'
         ctx.strokeStyle = 'green'
         ctx.rect(width / 2.5,0,400,height)
@@ -158,9 +172,9 @@ class Astronauts {
             }
             
         }
-        if (enemies.length === 0) {
+        if (enemies.length < (enemyNum / 8)) {
             let toggle = false
-            enemyNum += 2
+            enemyNum += 0.5
             for(let i = 0; i < enemyNum; i++) {
                 toggle = !toggle
                 let enemy = createEnemies(toggle)
@@ -181,6 +195,7 @@ class Astronauts {
     }
     
 }
+
 function gameOver() {
     let game = document.getElementById('space')
     
@@ -200,8 +215,8 @@ function gameOver() {
 function createEnemies(toggle) {
     var enemy = new Astronauts(
         (toggle) ? 100 : width - 100,
-        Astronauts.random(256, height - 256),
-        Astronauts.random(-2, -4), //NECCESSARY FIX
+        Astronauts.random(100, height - 100),
+        (toggle) ? Astronauts.random(0, 2) : Astronauts.random(-3,-1), //NECCESSARY FIX
         Astronauts.random(-2, 2),
         spaceship,
         'Enemy',
@@ -221,7 +236,7 @@ function next(astros) {
         
         var sir = new Astronauts(
             Astronauts.random(875, 1000),
-            Astronauts.random(256, this.height - 256),
+            Astronauts.random(256, height - 256),
             Astronauts.random(-2, 2), 
             Astronauts.random(-2, 2),
             astronaut,
@@ -235,20 +250,32 @@ function next(astros) {
         
         toggle = !toggle
         let newEnemy = createEnemies(toggle)
+        console.log(height)
         
-        
+        console.log(newEnemy)
         enemies.push(newEnemy)
     }
         
+    function setRadius() {
         
+    }
     
     
-
+    document.getElementById('space').addEventListener('click', (e) => {
+        
+        let mPosX = e.pageX
+        let mPosY = e.pageY
+        hitMarker[0] = mPosX 
+        hitMarker[1] = mPosY
+        clicked = true
+        radius = 30
+        
+    })
     
     document.getElementById('space').addEventListener('click', (e) => {
        
         enemies.forEach((elem, i) => {
-            if (e.pageX <= (elem.x + (elem.source.width / 3)) && e.pageX >= (elem.x - (elem.source.width / 20)) && (e.pageY <= (elem.y + (elem.source.height / 4))) && (e.pageY >= (elem.y - (elem.source.height / 30)))) {
+            if (e.pageX - 5 <= (elem.x + (elem.source.width / 3)) && e.pageX + 5 >= (elem.x - (elem.source.width / 20)) && (e.pageY - 5 <= (elem.y + (elem.source.height / 4))) && (e.pageY + 5 >= (elem.y - (elem.source.height / 30)))) {
                 score += 100
                 console.log(e.pageX,elem.x, e.pageY, elem.y)
                 console.log(elem.source.height / 6)
@@ -263,22 +290,3 @@ function next(astros) {
     Astronauts.init()
     
 }
-
-
-
-    
-
-
-
-
-
-
-
-// newAstroForm.addEventListener('submit', (e) => {
-//     e.preventDefault()
-//     postNewAstro(astroName.value, astroCraft.value)
-//     astronautList.innerHTML = ''
-//     fetchAstronauts()
-//     newAstroForm.reset() 
-// })
-

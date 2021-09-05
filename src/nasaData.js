@@ -30,6 +30,10 @@ const teamSelectRow1 = document.querySelector('#team-select-r1')
 const teamSelectRow2 = document.querySelector('#team-select-r2')
 const teamList = document.querySelector('#team-list')
 const teams = document.querySelector('#teams')
+const howToPlayScreen = document.querySelector('#how-to-play-screen')
+const howToPlayButton = document.querySelector('#how-to-play-button')
+const lowerStartScreen = document.querySelector('.lower-start-screen')
+const howToPlayBackButton = document.querySelector('#how-to-play-back-button')
 var userAstronauts = [];
 
 var warned = false

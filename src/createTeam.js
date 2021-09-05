@@ -13,7 +13,7 @@ function createTeam() {
     teamNumber.style.color = 'white';
     astronautList.prepend(teamNumber)
     createTeamBackButton.style.display = 'block'
-    document.getElementById('astronaut-list').style.display = 'inline-block'
+    astronautList.style.display = 'inline-block'
     populateTeamList()
 
 }
@@ -27,6 +27,7 @@ function populateTeamList() {
         
         for(let i in data){
             let li = document.createElement('li')
+            
             let deleteButton = document.createElement('button')
             deleteButton.textContent = 'Delete'
             
@@ -61,7 +62,15 @@ function saveTeam(team, teamName) {
         })
     })
     .then(response=>response.json())
-    .then(data => console.log(data))
+    .then(data => {
+        document.querySelectorAll('.deletableMember').forEach(e => e.remove());
+        populateTeamList()
+        console.log(userAstronauts.length)
+        while(userAstronauts.length > 0) {
+            userAstronauts.pop();
+        }
+        document.getElementById('team-number').innerHTML = `${userAstronauts.length} / 9`
+    })
 }
 
 function teamAtMax() {
@@ -76,9 +85,10 @@ function teamAtMax() {
                 var teamName = prompt('Enter a name for your team: ')
                 saveTeam(userAstronauts, teamName)
                 warned = false
+
                 teams.innerHTML = ''
                 
-                populateTeamList()
+                
             } 
         } else {
             alert('Please delete a team before creating a new one')
