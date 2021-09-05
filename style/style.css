@@ -9,7 +9,7 @@ html, body {
   body {
     background-color: #7cedea;
     font-family: 'Press Start 2P', cursive;
-    font-size: 1.5vw;
+    font-size: 1.2vw;
   }
 
 #background {
@@ -363,22 +363,3 @@ html, body {
         bottom: 7px
     }
 }
-
-/* @media only screen and (max-width: 1300px) {
-    #start-button {
-        
-        display: block;
-        width: 100%;
-        margin-bottom: 3%;
-    }
-    #create-team-button {
-        display: block;
-        width: 100%;
-    }
-    #scores-button {
-        margin-left: 0%;
-        display: block;
-        width: 100%;
-        margin-bottom: 3%;
-    }
-  }  */

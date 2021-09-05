@@ -20,7 +20,7 @@ function displayHighScore(appendTo, displayUpTo) {
                     default:
                         break
                 }
-                score.style.fontSize = '25px'
+                
                 score.textContent = `${sortedScores[i].playerName}:${sortedScores[i].score}`;
                 appendTo.appendChild(score)
             

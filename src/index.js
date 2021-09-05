@@ -1,6 +1,3 @@
-
-
-
 var ctx = document.getElementById('space').getContext('2d');
 var width = document.getElementById('space').width
 var height = document.getElementById('space').height
@@ -8,7 +5,7 @@ var astronaut = new Image();
 var spaceship = new Image();
 var runOnce = false
 
-
+var space = document.querySelector('#space')
 var newMen = []
 var enemies = []
 var hitMarker = [0, 0]
@@ -255,13 +252,8 @@ function next(astros) {
         console.log(newEnemy)
         enemies.push(newEnemy)
     }
-        
-    function setRadius() {
-        
-    }
-    
-    
-    document.getElementById('space').addEventListener('click', (e) => {
+
+    space.addEventListener('click', (e) => {
         
         let mPosX = e.pageX
         let mPosY = e.pageY
@@ -272,7 +264,7 @@ function next(astros) {
         
     })
     
-    document.getElementById('space').addEventListener('click', (e) => {
+    space.addEventListener('click', (e) => {
        
         enemies.forEach((elem, i) => {
             if (e.pageX - 5 <= (elem.x + (elem.source.width / 3)) && e.pageX + 5 >= (elem.x - (elem.source.width / 20)) && (e.pageY - 5 <= (elem.y + (elem.source.height / 4))) && (e.pageY + 5 >= (elem.y - (elem.source.height / 30)))) {
