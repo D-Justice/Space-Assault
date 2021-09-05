@@ -83,10 +83,16 @@ function teamAtMax() {
                 warned = true
             } else { 
                 var teamName = prompt('Enter a name for your team: ')
-                saveTeam(userAstronauts, teamName)
-                warned = false
-
-                teams.innerHTML = ''
+                if (teamName === null){
+                    console.log(teamName)
+                } else {
+                    console.log(teamName)
+                    saveTeam(userAstronauts, teamName)
+                    warned = false
+    
+                    teams.innerHTML = ''
+                }
+                
                 
                 
             } 
