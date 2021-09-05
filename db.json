@@ -1,16 +1,6 @@
 {
   "team": [
     {
-      "teamName": "Fam",
-      "teamMembers": [
-        "Megan",
-        "Mom",
-        "Dad",
-        "Damian"
-      ],
-      "id": 5
-    },
-    {
       "teamName": "OK",
       "teamMembers": [
         "Megan",
@@ -20,6 +10,20 @@
         "T"
       ],
       "id": 6
+    },
+    {
+      "teamName": "Game Over",
+      "teamMembers": [],
+      "id": 7
+    },
+    {
+      "teamName": "Space Junk",
+      "teamMembers": [
+        "Lilly ",
+        "Desmond",
+        "Darryl"
+      ],
+      "id": 8
     }
   ],
   "score": [
@@ -252,6 +256,31 @@
       "playerName": "Dad",
       "score": 2600,
       "id": 50
+    },
+    {
+      "playerName": "e",
+      "score": 0,
+      "id": 51
+    },
+    {
+      "playerName": "x",
+      "score": 0,
+      "id": 52
+    },
+    {
+      "playerName": "a",
+      "score": 0,
+      "id": 53
+    },
+    {
+      "playerName": "q",
+      "score": 0,
+      "id": 54
+    },
+    {
+      "playerName": "t",
+      "score": 0,
+      "id": 55
     }
   ],
   "astronauts": [

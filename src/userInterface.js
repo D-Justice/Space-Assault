@@ -5,10 +5,8 @@ startButton.addEventListener('click', () => {
     startGameScreen.style.display = 'none';
     teamSelectPage.style.display = 'inline-block'
     lowerStartScreen.style.display = 'none';
-    //game.style.display = 'inline-block'
     teamSelectBackButton.style.display = 'inline-block'
     teamSelectScreen.teamSelect()
-    //fetchAstronauts()
 })
 scoresButton.addEventListener('click', () =>{
     

@@ -22,6 +22,7 @@ function displayHighScore(appendTo, displayUpTo) {
                 }
                 
                 score.textContent = `${sortedScores[i].playerName}:${sortedScores[i].score}`;
+                
                 appendTo.appendChild(score)
             
         }
@@ -54,22 +55,24 @@ function startMenuHighScore() {
     startGameScreen.style.display = 'none';
     lowerStartScreen.style.display = 'none';
     var topScores = document.createElement('h1')
-    var ul = document.createElement('ul')
+    var ol = document.createElement('ol')
+    
     topScores.style.textAlign = 'center';
     topScores.style.backgroundColor = 'red';
     topScores.id = 'top-scores'
-    ul.style.columnCount = '2';
-    ul.style.backgroundColor = 'rgba(245, 245, 245, 0.7)';
-    ul.id = 'scores-list'
+    ol.style.columnCount = '2';
+    ol.style.paddingLeft = '5%'
+    ol.style.backgroundColor = 'rgba(245, 245, 245, 0.7)';
+    ol.id = 'scores-list'
     backButton.style.display = 'inline-block';
 
     topScores.textContent = 'TOP 50 HIGH SCORES'
 
-    startGameContainer.prepend(ul)
+    startGameContainer.prepend(ol)
     startGameContainer.prepend(topScores)
     
     
-    displayHighScore(ul, 50);
+    displayHighScore(ol, 50);
 }
 
 return {
