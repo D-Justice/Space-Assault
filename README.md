@@ -1,6 +1,9 @@
 # javascript-Final-Project
-
-To begin, run the following command:
+This project has one dependency and that is 'json-server'. To install all dependencies just run:
+```
+npm install
+```
+To run the json-server and point it to the correct file, run the following command:
 ```
 npm start
 ```
