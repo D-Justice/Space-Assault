@@ -3,7 +3,7 @@
     alert('Hello and welcome to the modified-for-deployability version of Space Assault! \n You may notice that some of the functionality does not work.' +
     'This is because this application makes use of a mock JSON server to allow the user to do things such as create a team, save their highscore and view others scores' +
     '\n If you want to experience this version of the application please go to: \n https://github.com/D-Justice/Space-Assault \n and follow the installment instructions. Have Fun!')
-
+    alert('This application has no responsive design just yet and will most likely not look its best, especially on a phone. \nTo get the proper experience please use a PC and zoom in/out accordingly until everything fits on the screen.')
 startButton.addEventListener('click', () => {
     startGameScreen.style.display = 'none';
     teamSelectPage.style.display = 'inline-block'
