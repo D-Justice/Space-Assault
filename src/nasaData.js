@@ -60,21 +60,21 @@ const astroNames = (data) => {
     
 }
 const checkExists = (name, craft) => {
-    fetch(`${postURL}/astronauts`)
-    .then(response => response.json())
-    .then(data => {
+    // fetch(`${postURL}/astronauts`)
+    // .then(response => response.json())
+    // .then(data => {
         
-       data.forEach((person, i) => {
-           if (person.name === name) {
-            sameName = true
-           }
-       })
-       if (!sameName) {
-           postAstros(name, craft)
-       } else {
-           sameName = false
-       }
-    })
+    //    data.forEach((person, i) => {
+    //        if (person.name === name) {
+    //         sameName = true
+    //        }
+    //    })
+    //    if (!sameName) {
+    //        postAstros(name, craft)
+    //    } else {
+    //        sameName = false
+    //    }
+    // })
 }
 const postAstros = (name, craft, id) => {
     fetch(`${postURL}/astronauts`, {

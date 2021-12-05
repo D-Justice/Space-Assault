@@ -18,7 +18,7 @@ function createTeam() {
 
 }
 function populateTeamList() {
-    fetch(`${URL}/team`)
+    fetch(`../public/team.json`)
     .then(response => response.json())
     .then(data => {
         let li = document.createElement('li')
@@ -51,7 +51,7 @@ function deleteTeam(id) {
     .then(data => console.log(data))
 }
 function saveTeam(team, teamName) {
-    fetch(`${URL}/team`, {
+    fetch(`../public/team.json`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
