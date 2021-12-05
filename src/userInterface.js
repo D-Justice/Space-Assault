@@ -1,5 +1,8 @@
 (function(createTeamScreen, startScreen, teamSelectScreen, highScoreScreen){
 
+    alert('Hello and welcome to the modified-for-deployability version of Space Assault! \n You may notice that some of the functionality does not work.' +
+    'This is because this application makes use of a mock JSON server to allow the user to do things such as create a team, save their highscore and view others scores' +
+    '\n If you want to experience this version of the application please go to: \n https://github.com/D-Justice/Space-Assault \n and follow the installment instructions. Have Fun!')
 
 startButton.addEventListener('click', () => {
     startGameScreen.style.display = 'none';

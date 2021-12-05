@@ -53,7 +53,7 @@ function teamSelect() {
             let newDiv = document.createElement('div')
             let nameOfTeam = document.createElement('p')
             let teamList = document.createElement('ul')
-            let team = ['Geoff', 'Bill', 'Gregory', 'Shayla', 'Michael', 'Hannah']
+            let team = ['Geoff', 'Bill', 'Gregory', 'Shayla', 'Michael', 'Hannah','Alic','Megan']
 
             team.forEach((member, i)=> {
                 let teamMember = document.createElement('li')
